@@ -1,0 +1,20 @@
+{
+  "name": "comment-watchbot-tg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon . --legacy-watch -e js",
+    "unix": "nodemon -x 'node index.js || touch index.js'",
+    "win": "nodemon --legacy-watch -x \"node index.js || copy /b index.js +,,\""
+  },
+  "keywords": [],
+  "author": "ZAZiOs",
+  "license": "MIT",
+  "description": "This bot automatically kicks users who join the chat, allowing them to only leave comments in reply to channel posts.",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9",
+    "telegraf": "^4.16.3"
+  }
+}
