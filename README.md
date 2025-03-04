@@ -11,8 +11,8 @@ This bot automatically kicks users who join the chat, allowing them to only leav
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/ZAZiOs/comment-watchbot-tg
+    cd comment-watchbot-tg
     ```
 
 2. Install dependencies:
