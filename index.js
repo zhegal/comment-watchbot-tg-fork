@@ -5,6 +5,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 const ctch = (err) => console.log(err)
 
 const isAdmin = async (ctx) => {
+    let msg = ctx?.update?.message
     let admins = await ctx.getChatAdministrators()
     admins = admins.map(admin => admin.user.id);
     return admins.includes(msg?.from?.id)
