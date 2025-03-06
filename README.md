@@ -35,6 +35,7 @@ This bot automatically kicks users who join the chat, allowing them to only leav
     ```
 
 2. Open `docker-compose.yml` and edit `BOT_TOKEN` to include your bot's Telegram token (same way as .env)
+
 2.1. Alternatively you can create `.env` file and follow the Step 2 of the manual method. Be sure to remove or comment out `BOT_TOKEN` from `docker_compose.yml`
 
 ## Running the Bot
