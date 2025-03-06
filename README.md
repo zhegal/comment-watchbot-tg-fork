@@ -50,7 +50,13 @@ This bot automatically kicks users who join the chat, allowing them to only leav
     ```
 
 - Over docker-compose:
-    `docker compose up -d` or `docker-compose up -d`
+    ```sh
+    docker compose up -d
+    ``` 
+    or 
+    ```sh
+    docker-compose up -d
+    ```
 
 - For debugging:
     ```sh
