@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - .:/usr/src/app
+    environment:
+      BOT_TOKEN: # Your Telegram token here
+      NODE_ENV: production # change to 'development' when testing the project
