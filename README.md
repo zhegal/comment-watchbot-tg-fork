@@ -8,6 +8,7 @@ This bot automatically kicks users who join the chat, allowing them to only leav
 - npm
 
 ## Setup
+#### Manual way
 
 1. Clone the repository:
     ```sh
@@ -25,6 +26,18 @@ This bot automatically kicks users who join the chat, allowing them to only leav
     BOT_TOKEN=your-telegram-bot-token
     ```
 
+#### Docker & Docker-compose
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/ZAZiOs/comment-watchbot-tg
+    cd comment-watchbot-tg
+    ```
+
+2. Open `docker-compose.yml` and edit `BOT_TOKEN` to include your bot's Telegram token (same way as .env).
+>[!NOTE]
+> Alternatively you can create `.env` file and follow the Step 2 of the manual method. Be sure to remove or comment out `BOT_TOKEN` from `docker_compose.yml`.
+
 ## Running the Bot
 
 - On Windows:
@@ -37,10 +50,21 @@ This bot automatically kicks users who join the chat, allowing them to only leav
     npm run unix
     ```
 
+- Over docker-compose:
+    ```sh
+    docker compose up -d
+    ``` 
+    or 
+    ```sh
+    docker-compose up -d # if your docker compose installation is component-based
+    ```
+
 - For debugging:
     ```sh
     npm start
     ```
+
+  Docker Compose users will need to change `NODE_ENV` variable to `development`.  
 
 ## License
 
