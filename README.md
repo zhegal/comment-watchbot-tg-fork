@@ -40,6 +40,9 @@ This bot automatically kicks users who join the chat, allowing them to only leav
 
 ## Running the Bot
 
+>[!TIP]
+>As [`nodemon`](https://github.com/remy/nodemon) is included with this project, running this script will automatically be wrapped over nodemon service, to allow the application to auto-restart when it crashes or if any file has been changed. See [the `nodemon`'s GitHub page](https://github.com/remy/nodemon) for more information.
+
 - On Windows:
     ```sh
     npm run win
