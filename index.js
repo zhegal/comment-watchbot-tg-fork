@@ -4,7 +4,7 @@ import 'dotenv/config'
 const bot = new Telegraf(process.env.BOT_TOKEN)
 const ctch = (err) => console.log(err)
 
-const whitelist = [1010473369, 5436194611];
+const whitelist = [1010473369, 5436194611]; // Replace this Telegram IDs with yours.
 const start_msg = `<b>МЯУ-МЯУ-МЯУ! НИЗЯ ЭТУ КОМАНДУ ТЫКАТЬ, НИЗЯЯ!</b>\n\n<i>Если вы хотите такого же бота-вахтёра, то исходный код вы можете найти тут:</i>\nhttps://github.com/ZAZiOs/comment-watchbot-tg/`;
                   // ^^^ HTML acceptable
 
