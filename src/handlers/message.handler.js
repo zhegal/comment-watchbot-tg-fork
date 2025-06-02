@@ -11,17 +11,35 @@ export default class MessageHandler {
     }
 
     register() {
+        this.bot.on('new_chat_members', this.onNewMembers.bind(this));
         this.bot.on('message', this.onMessage.bind(this));
+    }
+
+    async onNewMembers(ctx) {
+        const msg = ctx?.update?.message;
+        if (!config.allowedChats.includes(msg.chat.id.toString())) {
+            return;
+        }
+
+        const newMembers = msg?.new_chat_members;
+        if (!newMembers) return;
+
+        for (let member of newMembers) {
+            if (ctx.botInfo.id === member.id) continue;
+            await ctx.banChatMember(member.id).catch(Logger.error);
+            await ctx.unbanChatMember(member.id).catch(Logger.error);
+        }
     }
 
     async onMessage(ctx) {
         const msg = ctx?.update?.message;
-        const moderation = new ModerationService(ctx);
-        await moderation.handleNewMembers();
         if (!config.allowedChats.includes(msg.chat.id.toString())) {
             return;
         }
         if (msg.chat.type === "private") {
+            return;
+        }
+        if (msg.new_chat_members) {
             return;
         }
         if (await AdminGuard.isAdmin(ctx) || this.whitelist.includes(ctx?.from?.id)) {
@@ -38,6 +56,7 @@ export default class MessageHandler {
             }
             return;
         }
+        const moderation = new ModerationService(ctx);
         await moderation.handleLeftOrNoReply();
     }
 }
