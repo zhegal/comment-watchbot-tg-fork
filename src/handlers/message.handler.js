@@ -31,7 +31,9 @@ export default class MessageHandler {
             ctx.from.id
         );
         if (!subscribed) {
-            await ctx.deleteMessage(msg.message_id).catch(Logger.error);
+            if (config.removeUnsubscribed) {
+                await ctx.deleteMessage(msg.message_id).catch(Logger.error);
+            }
             return;
         }
         const moderation = new ModerationService(ctx);

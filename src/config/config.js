@@ -11,4 +11,5 @@ export default {
     whitelist: parseEnvArray(process.env.WHITELIST).map(Number),
     allowedChats: parseEnvArray(process.env.ALLOWED_CHATS),
     startMessage: process.env.START_MESSAGE,
+    removeUnsubscribed: parseEnvBoolean(process.env.REMOVE_UNSUBSCRIBED, false),
 };

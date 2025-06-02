@@ -32,8 +32,8 @@
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY
-cd YOUR_REPOSITORY
+git clone https://github.com/zhegal/comment-watchbot-tg-fork
+cd comment-watchbot-tg-fork
 ```
 
 2. Install dependencies:
@@ -49,6 +49,7 @@ BOT_TOKEN=your-telegram-bot-token
 WHITELIST=123456789,987654321
 ALLOWED_CHATS=-1001234567890,-1009876543210
 MAIN_CHANNEL=@your_channel_username
+REMOVE_UNSUBSCRIBED=true
 ```
 
 ---
