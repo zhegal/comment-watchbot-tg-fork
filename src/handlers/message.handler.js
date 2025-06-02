@@ -16,6 +16,8 @@ export default class MessageHandler {
 
     async onMessage(ctx) {
         const msg = ctx?.update?.message;
+        const moderation = new ModerationService(ctx);
+        await moderation.handleNewMembers();
         if (!config.allowedChats.includes(msg.chat.id.toString())) {
             return;
         }
@@ -36,10 +38,6 @@ export default class MessageHandler {
             }
             return;
         }
-        const moderation = new ModerationService(ctx);
         await moderation.handleLeftOrNoReply();
-        if (msg?.new_chat_members) {
-            await moderation.handleNewMembers();
-        }
     }
 }
