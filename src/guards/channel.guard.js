@@ -9,10 +9,7 @@ export default class ChannelGuard {
             : config.subscriptionChannel;
 
         const isSenderChat = msg?.sender_chat?.username === channelUsername;
-        const isForwardFromChat = msg?.forward_from_chat?.username === channelUsername;
-        const isForwardOrigin = msg?.forward_origin?.chat?.username === channelUsername;
-        const isReplySenderChat = msg?.reply_to_message?.sender_chat?.username === channelUsername;
 
-        return isSenderChat || isForwardFromChat || isForwardOrigin || isReplySenderChat;
+        return isSenderChat;
     }
 }
