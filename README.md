@@ -1,74 +1,110 @@
-# Telegram Channel-Assigned Chat Kicker
+# Telegram Channel Comments Moderation Bot (Refactor)
 
-This bot automatically kicks users who join the chat, allowing them to only leave comments in reply to channel posts.
+> This is a **fork and full refactor** of [ZAZiOs/comment-watchbot-tg](https://github.com/ZAZiOs/comment-watchbot-tg) project.  
+> The original project author is [ZAZiOs](https://github.com/ZAZiOs).  
+> Current version completely reworks the architecture for better extensibility, modularity, and production use.
+
+---
+
+## ✨ Key Features
+
+- Fully modular architecture using ESModules.
+- Restricts bot operation to selected chats only.
+- Whitelist support.
+- Administrator bypass.
+- Subscription checking for channel comments.
+- Full control over moderation logic.
+- Clean separation of services, guards, handlers, and configuration.
+
+---
 
 ## Requirements
 
-- Node.js
+- Node.js >= 18
 - npm
 
+---
+
 ## Setup
-#### Manual way
+
+### Manual
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/ZAZiOs/comment-watchbot-tg
-    cd comment-watchbot-tg
-    ```
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY
+cd YOUR_REPOSITORY
+```
 
 2. Install dependencies:
-    ```sh
-    npm install
-    ```
 
-3. Create a `.env` file in the root directory and add your bot token:
-    ```env
-    BOT_TOKEN=your-telegram-bot-token
-    ```
+```bash
+npm install
+```
 
-#### Docker & Docker-compose
+3. Create `.env` file:
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/ZAZiOs/comment-watchbot-tg
-    cd comment-watchbot-tg
-    ```
+```env
+BOT_TOKEN=your-telegram-bot-token
+WHITELIST=123456789,987654321
+ALLOWED_CHATS=-1001234567890,-1009876543210
+MAIN_CHANNEL=@your_channel_username
+```
 
-2. Open `docker-compose.yml` and edit `BOT_TOKEN` to include your bot's Telegram token (same way as .env).
->[!NOTE]
-> Alternatively you can create `.env` file and follow the Step 2 of the manual method. Be sure to remove or comment out `BOT_TOKEN` from `docker_compose.yml`.
+---
+
+### Docker
+
+1. Clone the repository as above.
+
+2. Either use `.env` file (recommended) or configure environment variables directly in your Docker Compose file.
+
+3. Start docker:
+
+```bash
+docker compose up -d
+```
+
+or
+
+```bash
+docker-compose up -d
+```
+
+---
 
 ## Running the Bot
 
->[!TIP]
->As [`nodemon`](https://github.com/remy/nodemon) is included with this project, running this script will automatically be wrapped over nodemon service, to allow the application to auto-restart when it crashes or if any file has been changed. See [the `nodemon`'s GitHub page](https://github.com/remy/nodemon) for more information.
+### On Windows:
 
-- On Windows:
-    ```sh
-    npm run win
-    ```
+```bash
+npm run win
+```
 
-- On Unix-based systems:
-    ```sh
-    npm run unix
-    ```
+### On Unix-based systems:
 
-- Over docker-compose:
-    ```sh
-    docker compose up -d
-    ``` 
-    or 
-    ```sh
-    docker-compose up -d # if your docker compose installation is component-based
-    ```
+```bash
+npm run unix
+```
 
-- For debugging:
-    ```sh
-    npm start
-    ```
+### Development mode:
 
-  Docker Compose users will need to change `NODE_ENV` variable to `development`.  
+```bash
+npm start
+```
+
+> As [`nodemon`](https://github.com/remy/nodemon) is included, files are automatically watched and restarts handled.
+
+---
 
 ## License
 
-This project is licensed under the MIT License.
+This project remains under the MIT License, same as the original.
+
+- Original repository: [ZAZiOs/comment-watchbot-tg](https://github.com/ZAZiOs/comment-watchbot-tg)
+
+---
+
+## Acknowledgements
+
+- Thanks to [ZAZiOs](https://github.com/ZAZiOs) for the original project idea.

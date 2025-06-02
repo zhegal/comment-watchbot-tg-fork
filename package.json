@@ -1,5 +1,5 @@
 {
-  "name": "comment-watchbot-tg",
+  "name": "comment-watchbot-tg-fork",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -9,9 +9,9 @@
     "win": "nodemon --legacy-watch -x \"node index.js || copy /b index.js +,,\""
   },
   "keywords": [],
-  "author": "ZAZiOs",
+  "author": "Evgeniy Galkovskiy (refactor), original: ZAZiOs",
   "license": "MIT",
-  "description": "This bot automatically kicks users who join the chat, allowing them to only leave comments in reply to channel posts.",
+  "description": "Fork and complete refactor of comment-watchbot-tg: Telegram moderation bot for comment chats with subscription verification and whitelist support.",
   "dependencies": {
     "dotenv": "^16.4.7",
     "nodemon": "^3.1.9",
