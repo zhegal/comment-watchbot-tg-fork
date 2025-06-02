@@ -1,4 +1,5 @@
 import AdminGuard from '../guards/admin.guard.js';
+import ChannelGuard from '../guards/channel.guard.js';
 import SubscriptionGuard from '../guards/subscription.guard.js';
 import ModerationService from '../services/moderation.service.js';
 import Logger from '../utils/logger.js';
@@ -33,16 +34,20 @@ export default class MessageHandler {
 
     async onMessage(ctx) {
         const msg = ctx?.update?.message;
+        if (msg?.left_chat_member || msg?.new_chat_members) {
+            await ctx.deleteMessage(msg.message_id).catch(Logger.error);
+            return;
+        }
         if (!config.allowedChats.includes(msg.chat.id.toString())) {
             return;
         }
         if (msg.chat.type === "private") {
             return;
         }
-        if (msg.new_chat_members) {
+        if (await AdminGuard.isAdmin(ctx) || this.whitelist.includes(ctx?.from?.id)) {
             return;
         }
-        if (await AdminGuard.isAdmin(ctx) || this.whitelist.includes(ctx?.from?.id)) {
+        if (ChannelGuard.isOwnChannelMessage(ctx)) {
             return;
         }
         const subscribed = await SubscriptionGuard.isSubscribed(
