@@ -13,6 +13,7 @@
 - Whitelist support.
 - Administrator bypass.
 - Subscription checking for channel comments.
+- Optional removal of messages from unsubscribed users.
 - Full control over moderation logic.
 - Clean separation of services, guards, handlers, and configuration.
 
@@ -49,7 +50,7 @@ BOT_TOKEN=your-telegram-bot-token
 WHITELIST=123456789,987654321
 ALLOWED_CHATS=-1001234567890,-1009876543210
 MAIN_CHANNEL=@your_channel_username
-REMOVE_UNSUBSCRIBED=true
+REMOVE_UNSUBSCRIBED=false
 ```
 
 ---
@@ -71,6 +72,27 @@ or
 ```bash
 docker-compose up -d
 ```
+
+---
+
+## Additional Configuration Options
+
+### REMOVE_UNSUBSCRIBED (optional)
+
+- Controls whether to automatically delete messages from users who are not subscribed to the channel.
+- Possible values: `true` or `false`.
+- **Default:** `false` — unsubscribed users will not be automatically removed, but will receive a warning message.
+- If set to `true` — messages from unsubscribed users will be deleted silently.
+
+---
+
+## Behavior Summary
+
+| Scenario | Behavior |
+| -------- | -------- |
+| `REMOVE_UNSUBSCRIBED` not set | Warning message shown |
+| `REMOVE_UNSUBSCRIBED=false` | Warning message shown |
+| `REMOVE_UNSUBSCRIBED=true` | Messages from unsubscribed users deleted |
 
 ---
 
