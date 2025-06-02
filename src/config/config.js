@@ -5,6 +5,11 @@ function parseEnvArray(value) {
     return value.split(',').map(v => v.trim());
 }
 
+function parseEnvBoolean(value, defaultValue = true) {
+    if (value === undefined) return defaultValue;
+    return value.toLowerCase() === 'true';
+}
+
 export default {
     botToken: process.env.BOT_TOKEN,
     subscriptionChannel: process.env.MAIN_CHANNEL,

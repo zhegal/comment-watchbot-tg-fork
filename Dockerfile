@@ -1,7 +1,7 @@
-# any version should work, as long as Telegraf library is supported by that version
-FROM node:23
+FROM node:20-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install
+RUN npm install --only=production
 COPY . .
+ENV NODE_ENV=production
 CMD [ "node", "index.js" ]
