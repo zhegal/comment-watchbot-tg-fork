@@ -17,7 +17,7 @@ export default class ModerationService {
 
         for (let member of newMembers) {
             if (this.ctx.botInfo.id === member.id) continue;
-            await this.ctx.banChatMember(member.id).catch(Logger.error);
+            // Kick, without a ban.
             await this.ctx.unbanChatMember(member.id).catch(Logger.error);
         }
     }
